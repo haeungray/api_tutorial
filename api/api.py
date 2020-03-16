@@ -8,6 +8,7 @@ from pytz import utc
 
 class MessageManager():
     last_id = 0
+
     def __init__(self):
         self.messages = {}
 
@@ -75,7 +76,7 @@ class Message(Resource):
             message.printed_once = args['printed_once']
         return message
 
-
+# class의 속성 전체를 api argument로 설정해야 할 때 
 class MessageList(Resource):
     @marshal_with(message_fields)
     def get(self):
@@ -83,11 +84,15 @@ class MessageList(Resource):
 
     @marshal_with(message_fields)
     def post(self):
+        #  parser 객체를 생성
         parser = reqparse.RequestParser()
+        # 파싱할 데이터 명칭과 타입 지정 
         parser.add_argument('message', type=str, required=True, help='Message cannot be blank!')
         parser.add_argument('duration', type=int, required=True, help='Duration cannot be blank!')
         parser.add_argument('message_category', type=str, required=True, help='Message category cannot be blank!')
+        # parse_args 메소드로 데이터 조합
         args = parser.parse_args()
+        # 모델에 삽입 (DB에 그대로 저장 )
         message = MessageModel(
             message=args['message'],
             duration=args['duration'],

@@ -1,9 +1,3 @@
-"""
-Book: Building RESTful Python Web Services
-Chapter 6: Working with models, SQLAlchemy, and hyperlinked APIs in Flask
-Author: Gaston C. Hillar - Twitter.com/gastonhillar
-Publisher: Packt Publishing Ltd. - http://www.packtpub.com
-"""
 from flask import Flask
 
 
