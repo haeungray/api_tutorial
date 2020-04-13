@@ -4,7 +4,7 @@ from sqlalchemy import create_engine, text
 
 # Default JSON encoder는 set을 JOSN으로 변환할 수 없음 
 # 그러므로 커스텀 인코더를 작성해서 set을 list로 변환하여
-## JSON 으로 변호나 간으하게 해주어야 한다. 
+## JSON 으로 변환하게 해주어야 한다. 
 
 class CustomJSONEncoder(JSONEncoder):
     def default(self, obj):
