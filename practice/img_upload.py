@@ -1,4 +1,5 @@
 import io
+import json
 
 def test_save_and_get_profile(api):
     resp = api.post(
@@ -9,4 +10,3 @@ def test_save_and_get_profile(api):
     )
     resp_json = json.loads(resp.data.decode('utf-8'))
     access_token = resp_json['access_token']
-    
